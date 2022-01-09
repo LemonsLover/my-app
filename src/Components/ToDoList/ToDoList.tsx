@@ -11,12 +11,12 @@ var TodoList = () => {
   var [text, setText] = useState("");
   var [todos, setTodos] = useState<todoType[]>([]);
 
-  const heandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     var target = e.target;
     setText(target.value);
   };
 
-  const heandleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && text !== "") {
       setTodos((prev) => [...prev, { text, id: Date.now().toString() }]);
       setText("");
@@ -52,8 +52,8 @@ var TodoList = () => {
         <legend>Введите текст и нажмите Enter</legend>
         <input
           value={text}
-          onChange={heandleChange}
-          onKeyPress={heandleKeyPress}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
         />
       </fieldset>
       {todos.length !== 0 ? drawTable() : null}
